@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebApplication1.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Product List</h1>
+
+<form asp-action="Search" method="post">
+    <div>
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" />
+
+        <label for="size">Size:</label>
+        <select id="size" name="size">
+            <option value="">--Select Size--</option>
+            <option value="Large">Large</option>
+            <option value="Medium">Medium</option>
+            <option value="Small">Small</option>
+        </select>
+
+        <label for="price">Price:</label>
+        <select id="price" name="price">
+            <option value="">--Select Price--</option>
+            <option value="100">100</option>
+            <option value="500">500</option>
+            <option value="275">275</option>
+        </select>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="">--Select Category--</option>
+            <option value="Standard">Standard</option>
+            <option value="Premium">Premium</option>
+            <option value="Economy">Economy</option>
+        </select>
+
+        <label for="conjunction">Conjunction:</label>
+        <select id="conjunction" name="conjunction">
+            <option value="AND">AND</option>
+            <option value="OR">OR</option>
+        </select>
+
+        <input type="submit" value="Search" />
+        <a asp-action="Index">Clear</a>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MfgDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCategory)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MfgDate.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCategory)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
